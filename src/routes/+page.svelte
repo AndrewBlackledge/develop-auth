@@ -1,30 +1,6 @@
 <script lang="ts">
-    import { GoogleAuthProvider, getAuth } from "@firebase/auth";
-    import { initializeApp } from "firebase/app";
-    import { Signin } from "@ourway/svelte-firebase-auth";
-    import { store } from "$lib/store";
     import { decrement, increment } from "$lib/counter";
-
-    const firebaseConfig = {
-        apiKey: "AIzaSyAAU8G6_I93RuQsfFdOf5wwdU4Wpn3cTXk",
-        authDomain: "tiddlywiki-a94cd.firebaseapp.com",
-        projectId: "tiddlywiki-a94cd",
-        storageBucket: "tiddlywiki-a94cd.appspot.com",
-        messagingSenderId: "251419323197",
-        appId: "1:251419323197:web:0e0ee30112d98099857354",
-    };
-
-    /*
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    console.log("AUTH: ", auth)
-    const googleAuthProvider = new GoogleAuthProvider();
-
-    function user(e: CustomEvent) {
-        console.log("CUSTOM EVENT: ",e);
-    }
-<Signin {auth} {googleAuthProvider} on:user_changed={user}/>
-    */
+    import { store } from "$lib/store";
 
     function inc() {
         store.dispatch(increment())
@@ -44,17 +20,16 @@
     }
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>
-    Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation
-</p>
+<h1>Redux Store Example</h1>
 
-Counter: {$store.counter.value}
-Counter: {$store.counter.value}
+<p>
 <button on:click={inc}>+</button>
 <button on:click={dec}>-</button>
+Counter: {$store.counter.value}
+</p>
 
-2ndCounter: {printoutCounter}
-2ndCounter: {printoutCounter}
+<p>
 <button on:click={() => printoutCounter++}>+</button>
 <button on:click={() => printoutCounter--}>-</button>
+2ndCounter: {printoutCounter}
+</p>
